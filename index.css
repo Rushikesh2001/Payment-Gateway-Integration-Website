@@ -20,21 +20,3 @@ div > h1{
     font-size: 2.3rem;
 }
 
-#pay-button{
-    border: 2px solid red;
-    box-sizing: border-box;
-    border-radius: 8px;
-    background-color: #5959ed;
-    color: #f1e3c4;
-    margin: 13px;
-    height: 50px;
-    width: 120px;
-    padding: 10px;
-    font-size: 1.3rem;
-    cursor: pointer;
-}
-
-#pay-button:hover{
-    background-color: rgb(66, 66, 231);
-    color: chartreuse;
-}

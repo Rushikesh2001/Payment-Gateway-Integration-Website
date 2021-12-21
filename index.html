@@ -12,53 +12,23 @@
 <body>
     <div class="container">
         <h1>Help Us By Donating!</h1>
-        <button id="pay-button">Donate</button>
-        <h2 id="success"> </h2>
+        <!-- <button class="razorpay-embed-btn" id="razorpay-embed-btn-js">Donate</button> -->
+        <div class="razorpay-embed-btn" data-url="https://pages.razorpay.com/pl_IZlgRgMGvysShO/view" data-text="Donate"
+            data-color="#528FF0" data-size="large">
+            <script>
+                (function () {
+                    var d = document; var x = !d.getElementById('razorpay-embed-btn-js')
+                    if (x) {
+                        var s = d.createElement('script'); s.defer = !0; s.id = 'razorpay-embed-btn-js';
+                        s.src = 'https://cdn.razorpay.com/static/embed_btn/bundle.js'; d.body.appendChild(s);
+                    } else {
+                        var rzp = window['__rzp__'];
+                        rzp && rzp.init && rzp.init()
+                    }
+                })();
+            </script>
+        </div>
     </div>
-    <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
-    <script>
-        var options = {
-            "key": "rzp_test_UkhUQGyZw5AKDt", // Enter the Key ID generated from the Dashboard
-            "amount": "50000", // Amount is in currency subunits. Default currency is INR. Hence, 50000 refers to 50000 paise
-            "currency": "INR",
-            "name": "Child Care Orphanage",
-            "description": "Donate Us!",
-            "image": "https://example.com/your_logo",
-            "order_id": "order_IZmrsOriLikpiW", //This is a sample Order ID. Pass the `id` obtained in the response of Step 1
-            "handler": function (response) {
-                let pay = document.getElementById('success');
-                pay.innerHTML = 'Payment is Successful';
-                alert(response.razorpay_payment_id);
-                alert(response.razorpay_order_id);
-                alert(response.razorpay_signature)
-            },
-            "prefill": {
-                "name": "Enter your name",
-                "email": "Enter your email ",
-                "contact": "Enter mobile number"
-            },
-            "notes": {
-                "address": "Razorpay Corporate Office"
-            },
-            "theme": {
-                "color": "#3399cc"
-            }
-        };
-        var rzp1 = new Razorpay(options);
-        rzp1.on('payment.failed', function (response) {
-            alert(response.error.code);
-            alert(response.error.description);
-            alert(response.error.source);
-            alert(response.error.step);
-            alert(response.error.reason);
-            alert(response.error.metadata.order_id);
-            alert(response.error.metadata.payment_id);
-        });
-        document.getElementById('pay-button').onclick = function (e) {
-            rzp1.open();
-            e.preventDefault();
-        }
-    </script>
 </body>
 
 </html>
